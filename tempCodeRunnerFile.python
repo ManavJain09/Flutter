@@ -1,0 +1,47 @@
+import datetime
+
+class DateUtility:
+    def __init__(self, holidays_file):
+        self.holidays = self.load_holidays(holidays_file)
+    
+    def load_holidays(self, holidays_file):
+        holidays = set()
+        with open(holidays_file) as f:
+            for line in f:
+                holidays.add(datetime.datetime.strptime(line.strip(), '%Y-%m-%d').date())
+        return holidays
+    
+    def convert_dt(self, from_date, from_date_TZ, to_date_TZ):
+        from_tz = datetime.timezone(datetime.timedelta(hours=from_date_TZ))
+        to_tz = datetime.timezone(datetime.timedelta(hours=to_date_TZ))
+        return from_date.astimezone(from_tz).astimezone(to_tz)
+    
+    def add_dt(self, from_date, number_of_days):
+        return from_date + datetime.timedelta(days=number_of_days)
+    
+    def sub_dt(self, from_date, number_of_days):
+        return from_date - datetime.timedelta(days=number_of_days)
+    
+    def get_days(self, from_date, to_date):
+        return (to_date - from_date).days
+    
+    def get_days_exclude_we(self, from_date, to_date):
+        days = 0
+        current_date = from_date
+        while current_date < to_date:
+            if current_date.weekday() < 5 and current_date not in self.holidays:
+                days += 1
+            current_date += datetime.timedelta(days=1)
+        return days
+    
+    def get_days_since_epoch(self, from_date):
+        return (from_date - datetime.datetime(1970, 1, 1)).days
+    
+    def get_business_days(self, from_date, to_date):
+        days = 0
+        current_date = from_date
+        while current_date < to_date:
+            if current_date.weekday() < 5 and current_date not in self.holidays:
+                days += 1
+            current_date += datetime.timedelta(days=1)
+        return days
