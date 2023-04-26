@@ -70,11 +70,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - lib/images/whatsapp-icon.png
-    - lib/images/pharMa.png
-    - lib/images/bg.png
-    - lib/images/google.png
-    - lib/images/phone.png
+
+    - images/pharMa.png
+    - images/bg.png
+    - images/google.png
 
 
   # To add assets to your application, add an assets section, like this:

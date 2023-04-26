@@ -32,7 +32,7 @@ class _LogScreenState extends State<LogScreen> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("lib/images/bg.png"), fit: BoxFit.cover),
+              image: AssetImage("images/bg.png"), fit: BoxFit.cover),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),
@@ -41,7 +41,7 @@ class _LogScreenState extends State<LogScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                "lib/images/pharMa.png",
+                "images/pharMa.png",
                 height: 240,
               ),
               TextFormField(
@@ -130,7 +130,7 @@ class _LogScreenState extends State<LogScreen> {
                           width: 30,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('lib/images/google.png'),
+                              image: AssetImage('images/google.png'),
                             ),
                             shape: BoxShape.circle,
                           ),
